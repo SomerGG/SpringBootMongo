@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import top.somer.model.User;
 import top.somer.service.IUserService;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class UserRest {
 
     @PostMapping("/user")
     public String insert(User user) {
+        user.setInputTime(new Timestamp(System.currentTimeMillis()));
         userService.insert(user);
         return "insert success";
     }
