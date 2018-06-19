@@ -4,8 +4,10 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * 用户实体类
@@ -27,6 +29,9 @@ public class User implements Serializable {
     private String name;
     @Field("age")
     private Integer age;
+    @Field("input_time")
+    @DateTimeFormat(pattern = "YYYY-MM-DD HH:mm:ss")
+    private Date inputTime;
 
     public String getId() {
         return id;
@@ -50,6 +55,14 @@ public class User implements Serializable {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public Date getInputTime() {
+        return inputTime;
+    }
+
+    public void setInputTime(Date inputTime) {
+        this.inputTime = inputTime;
     }
 
     public String toString() {
